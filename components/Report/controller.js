@@ -6,8 +6,9 @@ const create = async (reportDoc) => {
   return report;
 };
 
-const get = async () => {
-  const report = await store.getOne();
+const get = async (id) => {
+  if (!id) return Promise.reject("Need id");
+  const report = await store.getOne(id);
   return report;
 };
 const getAll = async () => {
@@ -19,4 +20,11 @@ const deleteOne = async (id) => {
   if (!id) return Promise.reject("Need id");
   const report = await store.deleteOne(id);
   return report;
+};
+
+module.exports = {
+  create,
+  get,
+  getAll,
+  deleteOne,
 };
