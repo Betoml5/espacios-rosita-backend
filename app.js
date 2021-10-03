@@ -7,10 +7,6 @@ const MONGO_URI = getURI();
 connectDB(MONGO_URI);
 
 const app = express();
-app.get("/", (req, res) => {
-  res.status(200).send({ hola: "Mundo" });
-});
-
 // Middlewares
 app.use(cors());
 app.options("*", cors());
