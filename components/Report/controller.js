@@ -2,7 +2,10 @@ const store = require("./store");
 
 const create = async (reportDoc) => {
   if (!reportDoc) return Promise.reject("Need report");
+
   const report = await store.create(reportDoc);
+  console.log(report);
+  console.log(reportDoc);
   return report;
 };
 

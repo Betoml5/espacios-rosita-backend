@@ -6,7 +6,8 @@ const response = require("../../network/response");
 router.post("/create", async (req, res) => {
   try {
     const report = req.body;
-    return response.success(req, res, report, 201);
+    const reportCreated = await controller.create(report);
+    return response.success(req, res, reportCreated, 201);
   } catch (error) {
     return response.error(req, res, error, 500);
   }
