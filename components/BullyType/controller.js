@@ -36,9 +36,15 @@ const updateOne = (id, bullyType) => {
     return updatedBullyType;
 }
 
+const find = () => {
+    const bullyTypes = await store.find();
+    return bullyTypes
+}
+
 module.exports = {
     createOne,
     deleteOne,
     updateOne,
-    findOne
+    findOne,
+    find
 }

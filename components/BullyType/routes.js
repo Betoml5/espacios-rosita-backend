@@ -23,3 +23,34 @@ router.get("/bullytype/:id", (req, res) => {
     }
 })
 
+router.get("/all", (req, res) => {
+    try {
+        const bullyTypes = await controller.find();
+        return responseHTTP.success(req, res, bullyTypes, 200);
+    } catch (error) {
+        return responseHTTP(re, res, error, 500)
+    }
+})
+
+router.put("/update/:id", (req, res) => {
+    const { id } = req.params;
+    const { bullyType } = req.body;
+    try {
+        const updatedBullyType = await controller.updateOne(id, bullyType)
+        return responseHTTP.success(req, res, updatedBullyType, 200);
+
+    } catch (error) {
+        return responseHTTP(req, res, error, 500)
+    }
+})
+
+
+router.delete("/delete/:id", (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedBullyType = await controller.deleteOne(id)
+        return responseHTTP.success(req, res, deletedBullyType, 200);
+    } catch (error) {
+        return responseHTTP(req, res, error, 500)
+    }
+})
